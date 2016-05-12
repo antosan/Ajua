@@ -1,6 +1,13 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.image import Image
 from kivy.properties import NumericProperty, ObjectProperty
+
+
+class CustomLayout(BoxLayout):
+    background_image = ObjectProperty(
+        Image(source='AJUA_Background.jpg',
+              anim_delay=.1))
 
 
 class AjuaRoot(BoxLayout):

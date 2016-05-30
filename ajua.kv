@@ -1,5 +1,14 @@
 AjuaRoot:
 
+<CustomLayout>
+    canvas.before:
+        BorderImage:
+            # BorderImage behaves like the CSS BorderImage
+            border: 10, 10, 10, 10
+            texture: self.background_image.texture
+            pos: self.pos
+            size: self.size
+
 <AjuaRoot>:
     p2btn1: p2btn1
     p2btn2: p2btn2
@@ -13,227 +22,202 @@ AjuaRoot:
     p1btn4: p1btn4
     p1btn5: p1btn5
     p1btn6: p1btn6
-    BoxLayout:
-        orientation: 'vertical'
+    CustomLayout:
         BoxLayout:
-            size_hint_y: 0.1
-            font_size: "10dp"
-            Label:
-                text: "[color=3333ff][b]TITLE[/b][/color]"
-                markup: True
-                halign: 'left'
-                valign: 'middle'
-                text_size: self.size
-                padding: 10, 10
-                canvas.before:
-                    Color:
-                        rgb: [0.5, 0, 0]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-            Label:
-                text: "[color=3333ff][b]PLAYER 2[/b][/color]"
-                markup: True
-                halign: 'right'
-                valign: 'middle'
-                text_size: self.size
-                padding: 10, 10
-                canvas.before:
-                    Color:
-                        rgb: [0.5, 0.5, 0]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
+            orientation: 'vertical'
+
+
+#            BoxLayout:
+#                size_hint_y: 0.1
+#                font_size: "10dp"
+#                Label:
+#                    text: "[color=ffffff][b]PLAYER 2[/b][/color]"
+#                    markup: True
+#                    halign: 'center'
+#                    valign: 'middle'
+#                    text_size: self.size
+#                    padding: 10, 10
+#                    canvas.before:
+#                        Color:
+#                            rgb: [0, 0.5, 0]
+#                        Rectangle:
+#                            pos: self.pos
+#                            size: self.size
 
 
 
-        BoxLayout:
-            orientation: "horizontal"
-            size_hint_y: 0.2
-            Label:
-                font_size: "40dp"
-                text: "{}".format(root.p2home)
-                size_hint_x: 0.15
-                canvas.before:
-                    Color:
-                        rgb: [0, 0.5, 0.5]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-            GridLayout:
-                cols: 6
-                size_hint_x: 0.70
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: 0.2
                 Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p2cup6)
+                    font_size: "40dp"
+                    text: "{}".format(root.p2home)
+                    size_hint_x: 0.15
+                GridLayout:
+                    cols: 6
+                    size_hint_x: 0.70
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p2cup6)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p2cup5)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p2cup4)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p2cup3)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p2cup2)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p2cup1)
                 Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p2cup5)
+                    size_hint_x: 0.15
+
+
+
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: 0.4
                 Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p2cup4)
+                    text: 'P2 HOME'
+                    size_hint_x: 0.15
+                    canvas.before:
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                            source: 'player2home.png'
+                GridLayout:
+                    cols: 6
+                    size_hint_x: 0.70
+
+                    # PLAYER 2 BUTTONS
+                    Button:
+                        id: p2btn6
+                        text: "P2Btn6"
+                        background_normal: 'player2cup.png'
+                        background_down: 'player2cup_selected.png'
+                        on_release: root.player_selection(2, 6)
+                    Button:
+                        id: p2btn5
+                        text: "P2Btn5"
+                        background_normal: 'player2cup.png'
+                        background_down: 'player2cup_selected.png'
+                        on_release: root.player_selection(2, 5)
+                    Button:
+                        id: p2btn4
+                        text: "P2Btn4"
+                        background_normal: 'player2cup.png'
+                        background_down: 'player2cup_selected.png'
+                        on_release: root.player_selection(2, 4)
+                    Button:
+                        id: p2btn3
+                        text: "P2Btn3"
+                        background_normal: 'player2cup.png'
+                        background_down: 'player2cup_selected.png'
+                        on_release: root.player_selection(2, 3)
+                    Button:
+                        id: p2btn2
+                        text: "P2Btn2"
+                        background_normal: 'player2cup.png'
+                        background_down: 'player2cup_selected.png'
+                        on_release: root.player_selection(2, 2)
+                    Button:
+                        id: p2btn1
+                        text: "P2Btn1"
+                        background_normal: 'player2cup.png'
+                        background_down: 'player2cup_selected.png'
+                        on_release: root.player_selection(2, 1)
+                    # END PLAYER 2 BUTTONS
+
+                    # PLAYER 1 BUTTONS
+                    Button:
+                        id: p1btn1
+                        text: "P1Btn1"
+                        on_release: root.player_selection(1, 1)
+                    Button:
+                        id: p1btn2
+                        text: "P1Btn2"
+                        on_release: root.player_selection(1, 2)
+                    Button:
+                        id: p1btn3
+                        text: "P1Btn3"
+                        on_release: root.player_selection(1, 3)
+                    Button:
+                        id: p1btn4
+                        text: "P1Btn4"
+                        on_release: root.player_selection(1, 4)
+                    Button:
+                        id: p1btn5
+                        text: "P1Btn5"
+                        on_release: root.player_selection(1, 5)
+                    Button:
+                        id: p1btn6
+                        text: "P1Btn6"
+                        on_release: root.player_selection(1, 6)
+                    # END PLAYER 1 BUTTONS
+
                 Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p2cup3)
+                    text: 'P1 HOME'
+                    size_hint_x: 0.15
+                    canvas.before:
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                            source: 'player1home.png'
+
+
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: 0.2
                 Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p2cup2)
+                    size_hint_x: 0.15
+                GridLayout:
+                    cols: 6
+                    size_hint_x: 0.70
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p1cup1)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p1cup2)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p1cup3)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p1cup4)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p1cup5)
+                    Label:
+                        font_size: "30dp"
+                        text: "{}".format(root.p1cup6)
                 Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p2cup1)
-            Label:
-                size_hint_x: 0.15
+                    font_size: "40dp"
+                    text: "{}".format(root.p1home)
+                    size_hint_x: 0.15
 
 
 
 
-        BoxLayout:
-            orientation: "horizontal"
-            size_hint_y: 0.4
-            Label:
-                text: 'P2 HOME'
-                size_hint_x: 0.15
-                canvas.before:
-                    Color:
-                        rgb: [0, 0, 0.5]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-            GridLayout:
-                cols: 6
-                size_hint_x: 0.70
-
-                # PLAYER 2 BUTTONS
-                Button:
-                    id: p2btn6
-                    text: "P2Btn6"
-                    on_release: root.player_selection(2, 6)
-                Button:
-                    id: p2btn5
-                    text: "P2Btn5"
-                    on_release: root.player_selection(2, 5)
-                Button:
-                    id: p2btn4
-                    text: "P2Btn4"
-                    on_release: root.player_selection(2, 4)
-                Button:
-                    id: p2btn3
-                    text: "P2Btn3"
-                    on_release: root.player_selection(2, 3)
-                Button:
-                    id: p2btn2
-                    text: "P2Btn2"
-                    on_release: root.player_selection(2, 2)
-                Button:
-                    id: p2btn1
-                    text: "P2Btn1"
-                    on_release: root.player_selection(2, 1)
-                # END PLAYER 2 BUTTONS
-
-                # PLAYER 1 BUTTONS
-                Button:
-                    id: p1btn1
-                    text: "P1Btn1"
-                    on_release: root.player_selection(1, 1)
-                Button:
-                    id: p1btn2
-                    text: "P1Btn2"
-                    on_release: root.player_selection(1, 2)
-                Button:
-                    id: p1btn3
-                    text: "P1Btn3"
-                    on_release: root.player_selection(1, 3)
-                Button:
-                    id: p1btn4
-                    text: "P1Btn4"
-                    on_release: root.player_selection(1, 4)
-                Button:
-                    id: p1btn5
-                    text: "P1Btn5"
-                    on_release: root.player_selection(1, 5)
-                Button:
-                    id: p1btn6
-                    text: "P1Btn6"
-                    on_release: root.player_selection(1, 6)
-                # END PLAYER 1 BUTTONS
-
-            Label:
-                text: 'P1 HOME'
-                size_hint_x: 0.15
-                canvas.before:
-                    Color:
-                        rgb: [0, 0, 0.5]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-
-
-        BoxLayout:
-            orientation: "horizontal"
-            size_hint_y: 0.2
-            Label:
-                size_hint_x: 0.15
-            GridLayout:
-                cols: 6
-                size_hint_x: 0.70
-                Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p1cup1)
-                Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p1cup2)
-                Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p1cup3)
-                Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p1cup4)
-                Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p1cup5)
-                Label:
-                    font_size: "30dp"
-                    text: "{}".format(root.p1cup6)
-            Label:
-                font_size: "40dp"
-                text: "{}".format(root.p1home)
-                size_hint_x: 0.15
-                canvas.before:
-                    Color:
-                        rgb: [0, 0.5, 0.5]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-
-
-
-
-        BoxLayout:
-            size_hint_y: 0.1
-            Label:
-                text: "[color=3333ff][b]PLAYER 1[/b][/color]"
-                markup: True
-                halign: 'left'
-                valign: 'middle'
-                text_size: self.size
-                padding: 10, 10
-                canvas.before:
-                    Color:
-                        rgb: [0.5, 0.5, 0]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-            Label:
-                text: "[color=3333ff][b]PAUSE[/b][/color]"
-                markup: True
-                halign: 'right'
-                valign: 'middle'
-                text_size: self.size
-                padding: 10, 10
-                canvas.before:
-                    Color:
-                        rgb: [0.5, 0, 0]
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
+#            BoxLayout:
+#                size_hint_y: 0.1
+#                Label:
+#                    text: "[color=ffffff][b]PLAYER 1[/b][/color]"
+#                    markup: True
+#                    halign: 'center'
+#                    valign: 'middle'
+#                    text_size: self.size
+#                    padding: 10, 10
+#                    canvas.before:
+#                        Color:
+#                            rgb: [0, 0, 0.5]
+#                        Rectangle:
+#                            pos: self.pos
+#                            size: self.size
